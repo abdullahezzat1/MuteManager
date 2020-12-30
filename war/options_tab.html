@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mute Manager</title>
+</head>
+
+<body>
+  <h1>Mute Manager Options</h1>
+  <label for="mode">Select Mode: </label>
+  <select name="mode" id="mode">
+    <option value="0">Mute all tabs except whitelisted domains</option>
+    <option value="1">Keep tabs unmuted except blacklisted domains</option>
+  </select>
+  <h3>Whitelist</h3>
+  <textarea name="whitelist" id="whitelist" cols="30" rows="10"></textarea>
+  <h3>Blacklist</h3>
+  <textarea name="blacklist" id="blacklist" cols="30" rows="10"></textarea>
+</body>
+
+</html>

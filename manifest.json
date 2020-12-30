@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "version": "0.1",
+  "name": "Mute Manager",
+  "browser_action": {
+    "browser_style": true,
+    "default_popup": "ui/pages/popup.html"
+  },
+  "options_ui": {
+    "page": "ui/pages/options.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scripts/content/c1.js"
+      ]
+    }
+  ],
+  "background": {
+    "persistent": true,
+    "page": "scripts/background/bg.html"
+  },
+  "web_accessible_resources": [
+    "war/options_tab.html"
+  ],
+  "permissions": [
+    "<all_urls>",
+    "tabs"
+  ]
+}
