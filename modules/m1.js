@@ -1,3 +1,1 @@
-let currentBrowser = typeof chrome === "undefined" ? browser : chrome;
-
-export default currentBrowser;
+var currentBrowser = typeof chrome === "undefined" ? browser : chrome;

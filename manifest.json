@@ -14,7 +14,9 @@
       "matches": [
         "<all_urls>"
       ],
+      "run_at": "document_start",
       "js": [
+        "modules/m1.js",
         "scripts/content/c1.js"
       ]
     }
@@ -24,10 +26,11 @@
     "page": "scripts/background/bg.html"
   },
   "web_accessible_resources": [
-    "war/options_tab.html"
+    "ui/pages/options_tab.html"
   ],
   "permissions": [
     "<all_urls>",
-    "tabs"
+    "tabs",
+    "storage"
   ]
 }
