@@ -1,3 +1,5 @@
+var currentBrowser = typeof chrome === "undefined" ? browser : chrome;
+
 function getData(callback) {
   currentBrowser.storage.local.get(["mode", "whitelist", "blacklist"], function (data) {
     callback(data);
@@ -6,8 +8,4 @@ function getData(callback) {
 
 function setData(object) {
   currentBrowser.storage.local.set(object);
-}
-
-function sendMessage(object) {
-  currentBrowser.runtime.sendMessage(object);
 }
