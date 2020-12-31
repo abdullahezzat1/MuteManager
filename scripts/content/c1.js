@@ -1,5 +1,5 @@
 console.log("content script working!!");
-currentBrowser.storage.local.get(["mode", "whitelist", "blacklist"], function (data) {
+getData(function (data) {
   let hostname = window.location.hostname;
   let mode = parseInt(data.mode);
   let whitelist = data.whitelist;
@@ -11,19 +11,19 @@ currentBrowser.storage.local.get(["mode", "whitelist", "blacklist"], function (d
       if (whitelist.includes(hostname) === false) {
 
         console.log("it's not whitelisted");
-        currentBrowser.runtime.sendMessage({ action: "mute" });
+        sendMessage({ action: "mute" });
       } else {
         console.log("it's whitelisted");
-        currentBrowser.runtime.sendMessage({ action: "unmute" });
+        sendMessage({ action: "unmute" });
       }
       break;
     case 1:
       if (blacklist.includes(hostname) === true) {
         console.log("it's blacklisted");
-        currentBrowser.runtime.sendMessage({ action: "mute" });
+        sendMessage({ action: "mute" });
       } else {
         console.log("it's not not blacklisted");
-        currentBrowser.runtime.sendMessage({ action: "unmute" });
+        sendMessage({ action: "unmute" });
       }
       break;
   }
