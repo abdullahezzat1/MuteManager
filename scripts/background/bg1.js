@@ -4,22 +4,25 @@ currentBrowser.runtime.onInstalled.addListener(function (details) {
       mode: 0,
       whitelist: [],
       blacklist: []
+    }, function () {
+      runContentScript();
     });
   }
-  currentBrowser.tabs.query({}, function (tabs, errors) {
-    console.log(tabs);
-    tabs.forEach(function (tab) {
-      currentBrowser.tabs.update(tab.id, { muted: true })
-    })
-  });
+  // toggleAllTabs();
 })
 // console.log("hello from background");
 currentBrowser.runtime.onMessage.addListener(function (message, sender, sendResponse) {
   let tabId = sender.tab.id;
-  if (message.action === "mute") {
-    currentBrowser.tabs.update(tabId, { muted: true });
-  } else {
-    currentBrowser.tabs.update(tabId, { muted: false });
+  switch (message.action) {
+    case "mute":
+      toggleTab(tabId, true);
+      break;
+    case "unmute":
+      toggleTab(tabId, false);
+      break;
+    case "runContentScript":
+      runContentScript();
+      break;
   }
   // console.log("Message:");
   // console.log(message);
@@ -28,3 +31,19 @@ currentBrowser.runtime.onMessage.addListener(function (message, sender, sendResp
   // console.log("sendResponse:");
   // console.log(sendResponse);
 });
+
+
+
+
+function toggleTab(tabId, mute = true) {
+  currentBrowser.tabs.update(tabId, { muted: mute })
+}
+
+function runContentScript() {
+  currentBrowser.tabs.query({}, function (tabs, errors) {
+    console.log(tabs);
+    tabs.forEach(function (tab) {
+      currentBrowser.tabs.executeScript(tab.id, { file: "/scripts/content/c1.js" });
+    })
+  });
+}
