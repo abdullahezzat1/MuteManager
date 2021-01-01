@@ -7,51 +7,57 @@ body {
   align-items: center;
   padding: .2rem .5rem;
   background-color: #eeeeee;
+  --btn-width: 100px;
+
 }
 
 textarea {
   background-color: #eeeeee;
 }
 
+p, label {
+  font-weight: bold;
+}
+
+p {
+  /* background-color: #c9eaff; */
+color: #008deb;
+margin-top: 0;
+}
+
+label {
+  padding: .5rem;
+  margin: .5rem;
+  border-radius: .5rem;
+  background-color: transparent;
+  transition: background .2s linear;
+  cursor: pointer;
+}
+
+label:hover {
+  background-color: rgb(206, 185, 255);
+}
+
 .btn {
   font-size: 16px;
   margin: .5rem 0;
-  padding: 1rem;
+  padding: .3rem;
   border-radius: .5rem;
   box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.472);
   outline: none;
   font-weight: bold;
-  cursor: pointer;
-  border: .2rem solid #00c500;
+  background-color: #39b0ff;
+  color: white;
+  text-decoration: none;
+  border: .2rem solid #008deb;
+  transition: border .2s linear;
 }
 
 textarea, .btn:hover{
   border: .2rem solid #000;
 }
 
-.link-btn{
-  background-color: #008deb;
-  color: white;
-  text-decoration: none;
-  border: .2rem solid #008deb;
-}
-
-.add {
-  background-color: #00c500;
-}
-
-.remove {
-  background-color: #c00000;
-}
-
-.whitelist {
-  color: #fff;
-}
-
-.blacklist {
-  color: #000;
-}
-
 .popup {
   width: max-content;
 }
+
