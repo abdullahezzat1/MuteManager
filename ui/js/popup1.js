@@ -3,7 +3,6 @@ let whitelistBtn = document.querySelector("button.whitelist");
 let blacklistBtn = document.querySelector("button.blacklist");
 
 getData(function (data) {
-  console.log(data);
   currentBrowser.tabs.query({ active: true }, function (tab) {
     let hostname = (new URL(tab[0].url)).hostname;
     let whitelist = data.whitelist;
@@ -14,33 +13,35 @@ getData(function (data) {
       switch (parseInt(e.target.value)) {
         case 0:
           whitelist.push(hostname);
-          setData({ whitelist: whitelist });
-          runContentScript();
-          changeWhitelistBtnState(1);
+          setData({ whitelist: whitelist }, function () {
+            runContentScript();
+            changeWhitelistBtnState(1);
+          });
           break;
         case 1:
           whitelist.splice(whitelist.indexOf(hostname), 1)
-          setData({ whitelist: whitelist });
-          runContentScript();
-          changeWhitelistBtnState(0);
+          setData({ whitelist: whitelist }, function () {
+            runContentScript();
+            changeWhitelistBtnState(0);
+          });
           break;
       }
     });
     blacklistBtn.addEventListener('click', function (e) {
-      console.log("black event working");
       switch (parseInt(e.target.value)) {
         case 0:
-          console.log("case 0");
           blacklist.push(hostname);
-          setData({ blacklist: blacklist });
-          runContentScript();
-          changeBlacklistBtnState(1);
+          setData({ blacklist: blacklist }, function () {
+            runContentScript();
+            changeBlacklistBtnState(1);
+          });
           break;
         case 1:
           blacklist.splice(blacklist.indexOf(hostname), 1);
-          setData({ blacklist: blacklist });
-          runContentScript();
-          changeBlacklistBtnState(0);
+          setData({ blacklist: blacklist }, function () {
+            runContentScript();
+            changeBlacklistBtnState(0);
+          });
           break;
       }
     });
@@ -50,11 +51,43 @@ getData(function (data) {
 
 function changeWhitelistBtnState(to) {
   whitelistBtn.value = to;
-  whitelistBtn.innerHTML = to ? "Remove from whitelisted domains" : "Add to whitelisted domains";
+  let classlist = whitelistBtn.classList;
+  switch (to) {
+    case 1:
+      whitelistBtn.innerHTML = "Remove from whitelisted domains";
+      if (classlist.contains("remove") === false) {
+        classlist.add("remove");
+      }
+      classlist.remove("add");
+      break;
+    case 0:
+      whitelistBtn.innerHTML = "Add to whitelisted domains";
+      if (classlist.contains("add") === false) {
+        classlist.add("add");
+      }
+      classlist.remove("remove");
+      break;
+  }
 }
 function changeBlacklistBtnState(to) {
   blacklistBtn.value = to;
-  blacklistBtn.innerHTML = to ? "Remove from blacklisted domains" : "Add to blacklisted domains";
+  let classlist = blacklistBtn.classList;
+  switch (to) {
+    case 1:
+      blacklistBtn.innerHTML = "Remove from blacklisted domains";
+      if (classlist.contains("remove") === false) {
+        classlist.add("remove");
+      }
+      classlist.remove("add");
+      break;
+    case 0:
+      blacklistBtn.innerHTML = "Add to blacklisted domains";
+      if (classlist.contains("add") === false) {
+        classlist.add("add");
+      }
+      classlist.remove("remove");
+      break;
+  }
 }
 
 

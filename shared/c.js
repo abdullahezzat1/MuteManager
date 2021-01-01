@@ -1,3 +1,3 @@
-function sendMessage(object) {
-  currentBrowser.runtime.sendMessage(object);
+function sendActionMessage(action) {
+  currentBrowser.runtime.sendMessage({ action: action });
 }

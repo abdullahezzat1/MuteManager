@@ -8,23 +8,23 @@ getData(function (data) {
   blacklist.value = data.blacklist.join("\n");
 })
 
-
-
-
 mode.onchange = function () {
-  setData({ mode: mode.value });
-  currentBrowser.runtime.sendMessage({ action: "runContentScript" });
+  setData({ mode: mode.value }, function () {
+    sendActionMessage("runContentScript");
+  });
 };
 
 whitelist.oninput = function () {
   let array = whitelist.value.split("\n");
-  setData({ whitelist: array })
-  currentBrowser.runtime.sendMessage({ action: "runContentScript" });
+  setData({ whitelist: array }, function () {
+    sendActionMessage("runContentScript");
+  });
 };
 
 
 blacklist.oninput = function () {
   let array = blacklist.value.split("\n");
-  setData({ blacklist: array })
-  currentBrowser.runtime.sendMessage({ action: "runContentScript" });
+  setData({ blacklist: array }, function () {
+    sendActionMessage("runContentScript");
+  });
 };

@@ -4,20 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/ui/css/style.css">
   <title>Mute Manager</title>
 </head>
 
 <body>
   <h1>Mute Manager Options</h1>
-  <label for="mode">Select Mode: </label>
-  <select name="mode" id="mode">
-    <option value="0">Mute all tabs except whitelisted domains</option>
-    <option value="1">Keep tabs unmuted except blacklisted domains</option>
-  </select>
+  <div>
+    <label for="mode">Select Mode: </label>
+    <select name="mode" id="mode">
+      <option value="0">Mute all tabs except whitelisted domains</option>
+      <option value="1">Keep tabs unmuted except blacklisted domains</option>
+    </select>
+  </div>
   <h3>Whitelisted domains</h3>
-  <textarea name="whitelist" id="whitelist" cols="30" rows="10" placeholder="One domain per line. Example: www.google.com""></textarea>
+  <textarea name="whitelist" id="whitelist" cols="60" rows="10" placeholder="One domain per line. Example: www.google.com""></textarea>
   <h3>Blacklisted domains</h3>
-  <textarea name=" blacklist" id="blacklist" cols="30" rows="10" placeholder="One domain per line. Example: www.google.com"></textarea>
+  <textarea name=" blacklist" id="blacklist" cols="60" rows="10" placeholder="One domain per line. Example: www.google.com"></textarea>
   <script src="/shared/all.js"></script>
   <script src="/shared/c.js"></script>
   <script src="/ui/js/options.js"></script>

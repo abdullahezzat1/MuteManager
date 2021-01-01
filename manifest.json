@@ -6,9 +6,6 @@
     "browser_style": true,
     "default_popup": "ui/pages/popup.html"
   },
-  "options_ui": {
-    "page": "ui/pages/options.html"
-  },
   "content_scripts": [
     {
       "matches": [
@@ -33,5 +30,9 @@
     "<all_urls>",
     "tabs",
     "storage"
-  ]
+  ],
+  "icons": {
+    "48": "icons/icon-thick.svg",
+    "96": "icons/icon-thick.svg"
+  }
 }

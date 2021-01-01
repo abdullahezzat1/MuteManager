@@ -6,6 +6,8 @@ function getData(callback) {
   })
 }
 
-function setData(object) {
-  currentBrowser.storage.local.set(object);
+function setData(object, callback) {
+  currentBrowser.storage.local.set(object, function () {
+    callback();
+  });
 }
