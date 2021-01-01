@@ -5,7 +5,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: .2rem .5rem;
   background-color: #eeeeee;
 }
 
@@ -14,12 +14,15 @@ textarea {
 }
 
 .btn {
-  margin: 1rem 0;
+  font-size: 16px;
+  margin: .5rem 0;
   padding: 1rem;
   border-radius: .5rem;
-  box-shadow: none;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.472);
+  outline: none;
   font-weight: bold;
   cursor: pointer;
+  border: .2rem solid #00c500;
 }
 
 textarea, .btn:hover{
@@ -30,6 +33,7 @@ textarea, .btn:hover{
   background-color: #008deb;
   color: white;
   text-decoration: none;
+  border: .2rem solid #008deb;
 }
 
 .add {
@@ -46,4 +50,8 @@ textarea, .btn:hover{
 
 .blacklist {
   color: #000;
+}
+
+.popup {
+  width: max-content;
 }
